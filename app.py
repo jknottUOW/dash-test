@@ -1,13 +1,21 @@
 import os
 
 import dash
+import dash-auth
 import dash_core_components as dcc
 import dash_html_components as html
+
+VALID_USERNAME_PASSWORD_PAIRS = {
+    'jknott': 'jknott'
+}
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
+auth = dash_auth.BasicAuth(
+    app,
+    VALID_USERNAME_PASSWORD_PAIRS
+)
 server = app.server
 
 app.layout = html.Div([
